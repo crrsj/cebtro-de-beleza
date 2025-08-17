@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linda Mulher - Salão de Beleza</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS Personalizado -->
+    <link rel="stylesheet" href="script.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Barra de Navegação -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">           
+            </a>
+            <h1 class="titulo-salao">Salão Linda Mulher</h1>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home"><i class="fas fa-home"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#servicos"><i class="fas fa-spa"></i> Serviços</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#agendamento"><i class="far fa-calendar-alt"></i> Agendamento</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#profissionais"><i class="fas fa-users"></i> Profissionais</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contato"><i class="fas fa-envelope"></i> Contato</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn-login" href="#login"><i class="fas fa-user"></i> Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Banner Principal -->
+    <header id="home" class="hero-section">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-3 fw-bold">Seu look perfeito começa aqui</h1>
+                    <p class="lead">Descubra a melhor versão de você mesma</p>
+                    <a href="#agendamento" class="btn btn-primary btn-lg mt-3">Agendar Horário</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Seção de Serviços -->
+    <section id="servicos" class="py-5">
+        <div class="container">
+            <div class="section-title text-center mb-5">
+                <h2><i class="fas fa-spa"></i> Nossos Serviços</h2>
+                <p class="text-muted">Oferecemos os melhores tratamentos de beleza</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="card service-card h-100">                      
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-cut"></i> Corte de Cabelo</h5>
+                            <p class="card-text">Cortes modernos e personalizados para realçar sua beleza.</p>
+                            <p class="price">A partir de R$ 80,00</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="card service-card h-100">                     
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-hand-sparkles"></i> Manicure & Pedicure</h5>
+                            <p class="card-text">Cuidados completos para suas mãos e pés.</p>
+                            <p class="price">A partir de R$ 60,00</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="card service-card h-100">                      
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-eye"></i> Maquiagem</h5>
+                            <p class="card-text">Maquiagem profissional para qualquer ocasião.</p>
+                            <p class="price">A partir de R$ 120,00</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="card service-card h-100">                       
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="far fa-eye"></i> Design de Sobrancelhas</h5>
+                            <p class="card-text">Realce seu olhar com sobrancelhas perfeitas.</p>
+                            <p class="price">A partir de R$ 50,00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Agendamento -->
+    <section id="agendamento" class="py-5 bg-light">
+        <div class="container">
+            <div class="section-title text-center mb-5">
+                <h2><i class="far fa-calendar-alt"></i> Agendamento Online</h2>
+                <p class="text-muted">Agende seu horário com facilidade</p>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card shadow">
+                        <div class="card-body p-5">
+                            <form id="form-agendamento">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="nome" class="form-label">Nome Completo</label>
+                                        <input type="text" class="form-control" id="nome" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="telefone" class="form-label">Telefone</label>
+                                        <input type="tel" class="form-control" id="telefone" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="servico" class="form-label">Serviço</label>
+                                        <select class="form-select" id="servico" required>
+                                            <option value="" selected disabled>Selecione um serviço</option>
+                                            <option value="corte">Corte de Cabelo</option>
+                                            <option value="manicure">Manicure/Pedicure</option>
+                                            <option value="maquiagem">Maquiagem</option>
+                                            <option value="sobrancelha">Design de Sobrancelhas</option>
+                                            <option value="outros">Outros</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="profissional" class="form-label">Profissional</label>
+                                        <select class="form-select" id="profissional" required>
+                                            <option value="" selected disabled>Selecione um profissional</option>
+                                            <option value="ana">Ana Clara</option>
+                                            <option value="beatriz">Beatriz Souza</option>
+                                            <option value="carla">Carla Mendes</option>
+                                            <option value="qualquer">Qualquer profissional</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="data" class="form-label">Data</label>
+                                        <input type="date" class="form-control" id="data" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="hora" class="form-label">Horário</label>
+                                        <input type="time" class="form-control" id="hora" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="confirmacao">
+                                            <label class="form-check-label" for="confirmacao">
+                                                Confirmo que li e aceito os termos de agendamento
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 text-center mt-4">
+                                        <button type="submit" class="btn btn-primary btn-lg">Agendar Horário</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Profissionais -->
+    <section id="profissionais" class="py-5">
+        <div class="container">
+            <div class="section-title text-center mb-5">
+                <h2><i class="fas fa-users"></i> Nossos Profissionais</h2>
+                <p class="text-muted">Conheça nossa equipe de especialistas</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="card team-card h-100">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" class="card-img-top" alt="Ana Clara">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Ana Clara</h5>
+                            <p class="card-text text-muted">Cabeleireira Master</p>
+                            <div class="social-icons">
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i class="fab fa-facebook"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="card team-card h-100">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" class="card-img-top" alt="Beatriz Souza">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Beatriz Souza</h5>
+                            <p class="card-text text-muted">Especialista em Maquiagem</p>
+                            <div class="social-icons">
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i class="fab fa-facebook"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="card team-card h-100">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" class="card-img-top" alt="Carla Mendes">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Carla Mendes</h5>
+                            <p class="card-text text-muted">Designer de Sobrancelhas</p>
+                            <div class="social-icons">
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i class="fab fa-facebook"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="card team-card h-100">
+                        <img src="https://randomuser.me/api/portraits/women/76.jpg" class="card-img-top" alt="Daniela Lima">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Daniela Lima</h5>
+                            <p class="card-text text-muted">Manicure/Pedicure</p>
+                            <div class="social-icons">
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i class="fab fa-facebook"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Depoimentos -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="section-title text-center mb-5">
+                <h2><i class="fas fa-quote-left"></i> Depoimentos</h2>
+                <p class="text-muted">O que nossas clientes dizem</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div id="carouselDepoimentos" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="testimonial-item text-center">
+                                    <img src="https://randomuser.me/api/portraits/women/12.jpg" class="rounded-circle mb-3" width="80" alt="Cliente 1">
+                                    <p class="lead">"Adoro o atendimento no Bella Donna! Sempre saio linda e satisfeita com os serviços."</p>
+                                    <h5>Mariana Silva</h5>
+                                    <div class="stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="testimonial-item text-center">
+                                    <img src="https://randomuser.me/api/portraits/women/25.jpg" class="rounded-circle mb-3" width="80" alt="Cliente 2">
+                                    <p class="lead">"Profissionais excelentes e ambiente muito agradável. Recomendo a todas!"</p>
+                                    <h5>Juliana Oliveira</h5>
+                                    <div class="stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="testimonial-item text-center">
+                                    <img src="https://randomuser.me/api/portraits/women/33.jpg" class="rounded-circle mb-3" width="80" alt="Cliente 3">
+                                    <p class="lead">"O melhor salão que já frequentei. Atenção especial aos detalhes e ótimos resultados."</p>
+                                    <h5>Camila Santos</h5>
+                                    <div class="stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselDepoimentos" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Anterior</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselDepoimentos" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Próximo</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Contato -->
+    <section id="contato" class="py-5">
+        <div class="container">
+            <div class="section-title text-center mb-5">
+                <h2><i class="fas fa-envelope"></i> Contato</h2>
+                <p class="text-muted">Entre em contato conosco</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="contact-info">
+                        <div class="contact-item mb-4">
+                            <div class="icon-box">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h5>Endereço</h5>
+                                <p>Rua das Belezas, 123 - Centro, São Paulo/SP</p>
+                            </div>
+                        </div>
+                        <div class="contact-item mb-4">
+                            <div class="icon-box">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h5>Telefone</h5>
+                                <p>(79) 98831-7115</p>
+                            </div>
+                        </div>
+                        <div class="contact-item mb-4">
+                            <div class="icon-box">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h5>Email</h5>
+                                <p>crrsj1@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item mb-4">
+                            <div class="icon-box">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h5>Horário de Funcionamento</h5>
+                                <p>Segunda a Sábado: 9h às 20h</p>
+                                <p>Domingo: 10h às 16h</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card shadow">
+                        <div class="card-body p-4">
+                            <form id="form-contato">
+                                <div class="mb-3">
+                                    <label for="nome-contato" class="form-label">Nome</label>
+                                    <input type="text" class="form-control" id="nome-contato" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email-contato" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email-contato" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="assunto-contato" class="form-label">Assunto</label>
+                                    <input type="text" class="form-control" id="assunto-contato" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="mensagem-contato" class="form-label">Mensagem</label>
+                                    <textarea class="form-control" id="mensagem-contato" rows="4" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h5 class="mb-4">Linda Mulher</h5>
+                    <p>O salão de beleza que cuida de você com carinho e profissionalismo, trazendo o melhor em tratamentos estéticos.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                    <h5 class="mb-4">Links Rápidos</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#home" class="text-white">Home</a></li>
+                        <li class="mb-2"><a href="#servicos" class="text-white">Serviços</a></li>
+                        <li class="mb-2"><a href="#agendamento" class="text-white">Agendamento</a></li>
+                        <li class="mb-2"><a href="#profissionais" class="text-white">Profissionais</a></li>
+                        <li class="mb-2"><a href="#contato" class="text-white">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="mb-4">Horário de Funcionamento</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">Segunda a Sexta: 9h - 20h</li>
+                        <li class="mb-2">Sábado: 9h - 20h</li>
+                        <li class="mb-2">Domingo: 10h - 16h</li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="mb-4">Newsletter</h5>
+                    <p>Assine nossa newsletter para receber promoções e novidades.</p>
+                    <form class="mb-3">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Seu email">
+                            <button class="btn btn-primary" type="button">Assinar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; 2025 Linda Mulher. Todos os direitos reservados.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0">Desenvolvido com <i class="fas fa-heart text-danger"></i> por Carlos Roberto</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal de Login -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><i class="fas fa-user"></i> Área do Cliente</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="form-login">
+                        <div class="mb-3">
+                            <label for="login-email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="login-email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="login-senha" class="form-label">Senha</label>
+                            <input type="password" class="form-control" id="login-senha" required>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="lembrar">
+                            <label class="form-check-label" for="lembrar">Lembrar de mim</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Entrar</button>
+                    </form>
+                    <div class="text-center mt-3">
+                        <a href="#" class="text-decoration-none">Esqueceu a senha?</a>
+                        <p class="mt-2">Não tem conta? <a href="#" class="text-decoration-none">Cadastre-se</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botão Voltar ao Topo -->
+    <a href="#" class="btn btn-primary btn-floating btn-lg back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- JS Personalizado -->
+    <script src="script.js"></script>
+</body>
+</html>
