@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contatos Recebidos</title>
+  <style>
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #111; /* preto */
+  margin: 0;
+  padding: 20px;
+  color: #fff;
+}
+
+.container {
+  max-width: 1000px;
+  margin: auto;
+  background: #fff; /* branco */
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0px 4px 12px rgba(255, 20, 147, 0.3); /* rosa neon suave */
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #e91e63; /* rosa */
+  text-shadow: 1px 1px 2px #000;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+thead {
+  background-color: #e91e63; /* rosa */
+  color: #fff;
+}
+
+th, td {
+  padding: 14px;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+}
+
+/* Linhas do corpo da tabela em preto */
+tbody tr {
+  background-color: #000; /* preto */
+  color: #fff; /* texto branco */
+}
+
+tbody tr:nth-child(even) {
+  background-color: #1a1a1a; /* preto suave alternado */
+}
+
+tbody tr:hover {
+  background-color: #333; /* preto mais claro no hover */
+}
+
+.btn-excluir {
+  background-color: #e91e63; /* rosa */
+  border: none;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-excluir:hover {
+  background-color: #c2185b; /* rosa mais escuro */
+  transform: scale(1.05);
+}
+
+/* Container do botão centralizado */
+.btn-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Botão rosa de voltar */
+.btn-voltar {
+  background-color: #e91e63;
+  border: none;
+  color: white;
+  font-size: 16px;
+  padding: 12px 24px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-voltar:hover {
+  background-color: #c2185b;
+  transform: scale(1.05);
+}
+
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Contatos Recebidos</h1>
+
+    <table id="tabela-contatos">
+      <thead>
+        <tr>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>Assunto</th>
+          <th>Mensagem</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Os contatos serão carregados aqui via JS -->
+      </tbody>
+    </table>
+
+    <!-- Botão de voltar -->
+    <div class="btn-container">
+      <button class="btn-voltar" onclick="voltarMenu()">⬅ Voltar ao Menu</button>
+    </div>
+  </div>  
+ <script>
+    // Função para buscar contatos
+    function buscarContatos() {
+      fetch("http://localhost:8080/api/contato")
+        .then(response => {
+          if (!response.ok) {
+            throw new Error("Erro ao buscar contatos");
+          }
+          return response.json();
+        })
+        .then(contatos => {
+          const tbody = document.querySelector("#tabela-contatos tbody");
+          tbody.innerHTML = "";
+
+          contatos.forEach(contato => {
+            const tr = document.createElement("tr");
+
+            tr.innerHTML = `
+              <td>${contato.id}</td>
+              <td>${contato.nomeContato}</td>
+              <td>${contato.emailContato}</td>
+              <td>${contato.assunto}</td>
+              <td>${contato.mensagem}</td>
+              <td><button class="btn-excluir" onclick="excluirContato(${contato.id})">Excluir</button></td>
+            `;
+
+            tbody.appendChild(tr);
+          });
+        })
+        .catch(error => {
+          console.error("Erro:", error);
+          alert("Não foi possível carregar os contatos.");
+        });
+    }
+
+    // Função para excluir contato
+    function excluirContato(id) {
+      if (confirm("Deseja realmente excluir este contato?")) {
+        fetch(`http://localhost:8080/api/contato/${id}`, {
+          method: "DELETE"
+        })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error("Erro ao excluir contato");
+          }
+          alert("Contato excluído com sucesso!");
+          buscarContatos(); // atualiza a tabela
+        })
+        .catch(error => {
+          console.error("Erro:", error);
+          alert("Não foi possível excluir o contato.");
+        });
+      }
+    }
+
+    // Função para voltar ao menu
+    function voltarMenu() {
+      window.location.href = "index.html"; // ajuste o caminho do menu principal
+    }
+
+    // Carregar contatos ao abrir a página
+    window.onload = buscarContatos;
+  </script>
+
+  </script>
+</body>
+</html>

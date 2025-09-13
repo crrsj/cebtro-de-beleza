@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Serviços Agendados</title>  
+</head>
+<style>
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #111; /* preto */
+  margin: 0;
+  padding: 20px;
+  color: #fff;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  background: #fff; /* branco */
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0px 4px 12px rgba(255, 20, 147, 0.3); /* rosa neon suave */
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #e91e63; /* rosa */
+  text-shadow: 1px 1px 2px #000;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+thead {
+  background-color: #e91e63; /* rosa */
+  color: #fff;
+}
+
+th, td {
+  padding: 14px;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+}
+
+/* Linhas do corpo da tabela em preto */
+tbody tr {
+  background-color: #000; /* preto */
+  color: #fff; /* texto branco */
+}
+
+tbody tr:nth-child(even) {
+  background-color: #1a1a1a; /* preto suave alternado */
+}
+
+tbody tr:hover {
+  background-color: #333; /* preto mais claro no hover */
+}
+
+.btn-excluir {
+  background-color: #e91e63; /* rosa */
+  border: none;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-excluir:hover {
+  background-color: #c2185b; /* rosa mais escuro */
+  transform: scale(1.05);
+}
+
+.btn-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Botão rosa */
+.btn-voltar {
+  background-color: #e91e63; /* rosa */
+  border: none;
+  color: white;
+  font-size: 16px;
+  padding: 12px 24px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-voltar:hover {
+  background-color: #c2185b; /* rosa mais escuro */
+  transform: scale(1.05);
+}
+
+</style>
+<body>
+  <div class="container">
+    <h1>Serviços Agendados</h1>
+
+    <table id="tabela-servicos">
+      <thead>
+        <tr>
+          <th>Cliente</th>
+          <th>Serviço</th>
+          <th>Data</th>
+           <th>Profissional</th>
+          <th>Hora</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Os serviços serão adicionados aqui dinamicamente -->
+      </tbody>
+    </table>
+  </div>
+   <div class="btn-container">
+      <button class="btn-voltar" onclick="voltarMenu()">⬅ Voltar ao Inicio</button>
+    </div>
+  </div>
+
+  <script>
+    // Carregar serviços do backend com fetch
+async function carregarServicos() {
+  try {
+    const resposta = await fetch("http://localhost:8080/api/clientes"); // GET
+    if (!resposta.ok) {
+      throw new Error("Erro ao buscar serviços!");
+    }
+
+    const servicos = await resposta.json(); // transforma em objeto JS
+    preencherTabela(servicos);
+
+  } catch (erro) {
+    console.error("Erro:", erro);
+    alert("Não foi possível carregar os serviços.");
+  }
+}
+
+// Preencher tabela dinamicamente
+function preencherTabela(servicos) {
+  const tabelaBody = document.querySelector("#tabela-servicos tbody");
+  tabelaBody.innerHTML = "";
+
+  servicos.forEach((s) => {
+    const row = document.createElement("tr");
+
+    row.innerHTML = `
+      <td>${s.nome}</td>
+      <td>${s.servico}</td>
+      <td>${(() => {
+                const [ano, mes, dia] = s.data.split('-'); // "YYYY-MM-DD"
+                return new Date(ano, mes - 1, dia).toLocaleDateString();
+                })()}</td>
+       <td>${s.profissional}</td>         
+      <td>${s.horario}</td>
+      <td><button class="btn-excluir" onclick="excluirServico(${s.id})">Excluir</button></td>
+    `;
+
+    tabelaBody.appendChild(row);
+  });
+}
+
+// Excluir serviço pelo backend
+async function excluirServico(id) {
+  if (!confirm("Tem certeza que deseja excluir este serviço?")) return;
+
+  try {
+    const resposta = await fetch(`http://localhost:8080/api/clientes/${id}`, {
+      method: "DELETE"
+    });
+
+    if (!resposta.ok) {
+      throw new Error("Erro ao excluir serviço!");
+    }
+
+    alert("Serviço excluído com sucesso!");
+    carregarServicos(); // recarregar tabela
+
+  } catch (erro) {
+    console.error("Erro:", erro);
+    alert("Não foi possível excluir o serviço.");
+  }
+}
+
+function voltarMenu() {
+  // Aqui você pode ajustar o destino
+  window.location.href = "index.html";
+}
+
+// Inicializar página carregando serviços
+carregarServicos();
+
+  </script>
+</body>
+</html>
